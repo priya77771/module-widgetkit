@@ -1,0 +1,25 @@
+<?php
+use Magento\Framework\View\Helper\SecureHtmlRenderer;
+use MageOS\Widgetkit\Block\Adminhtml\Slideshow\Preview;
+use Magento\Framework\Escaper;
+
+/**
+ * @var SecureHtmlRenderer $secureRenderer
+ * @var Preview $block
+ * @var Escaper $escaper
+ */
+
+$uniqId = uniqid();
+?>
+<?= $this->addTwindManagement($uniqId, 'slideshow-widget'); ?>
+<?= $this->getChildHtml("previewAssets"); ?>
+<?php if (!empty($this->getData('mageos_slideshow_title'))): ?>
+    <<?= $this->getData('mageos_slideshow_title_type'); ?>><?= $this->getData('mageos_slideshow_title'); ?></<?= $this->getData('mageos_slideshow_title_type'); ?>>
+<?php endif; ?>
+<?php if (!empty($this->getData('mageos_slideshow_description'))): ?>
+    <div><?= $this->getData('mageos_slideshow_description'); ?></div>
+<?php endif; ?>
+
+<div id="widget<?= $uniqId; ?>" class="slideshow-widget">
+<?= $this->renderMainTemplate(); ?>
+</div>

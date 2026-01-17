@@ -1,0 +1,384 @@
+<?xml version="1.0" ?>
+
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:MageOS_PageBuilderWidget:etc/widget.xsd">
+
+    <!-- slideshow component -->
+    <widget id="mageos_slideshow" class="MageOS\Widgetkit\Block\Widgets\Slideshow">
+        <label translate="true">MageOS Slideshow</label>
+        <description translate="true">MageOS slideshow widget</description>
+        <parameters>
+            <parameter name="template" sort_order="1" xsi:type="select" visible="true">
+                <label>Template</label>
+                <options>
+                    <option name="default" value="widget/hyva/slideshow.phtml" selected="true">
+                        <label translate="true">MageOS Hyvä Slideshow Template</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="mageos_slideshow_title" sort_order="10" visible="true" xsi:type="text">
+                <label>Title</label>
+                <description>This field is visible on frontend.</description>
+            </parameter>
+            <parameter name="mageos_slideshow_title_type" sort_order="11" visible="true" xsi:type="select">
+                <label>Title Type</label>
+                <description>This field is visible on frontend.</description>
+                <options>
+                    <option name="h1" value="h1">
+                        <label translate="true">H1</label>
+                    </option>
+                    <option name="h2" value="h2" selected="true">
+                        <label translate="true">H2</label>
+                    </option>
+                    <option name="h3" value="h3">
+                        <label translate="true">H3</label>
+                    </option>
+                    <option name="h4" value="h4">
+                        <label translate="true">H4</label>
+                    </option>
+                    <option name="h5" value="h5">
+                        <label translate="true">H5</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="mageos_slideshow_description" sort_order="12" visible="true" xsi:type="block">
+                <label>Description</label>
+                <description>This field is visible on frontend.</description>
+                <block class="MageOS\AdvancedWidget\Block\WidgetField\TextArea"/>
+            </parameter>
+
+            <parameter name="mageos_slideshow_content_section_title" xsi:type="block" required="false" visible="true" sort_order="20">
+                <description>
+                    <![CDATA[<h3 style="margin: 40px 0px; text-align: center;">Content</h3>]]></description>
+                <block class="MageOS\AdvancedWidget\Block\Adminhtml\Renderer\Title"/>
+            </parameter>
+            <parameter name="repeatable_slideshow_items" xsi:type="block" sort_order="21" required="false" visible="true">
+                <label translate="true">Slideshow items</label>
+                <block class="MageOS\Widgetkit\Block\Adminhtml\Slideshow\Item"/>
+            </parameter>
+
+            <parameter name="mageos_slideshow_settings_section_title" xsi:type="block" required="false" visible="true" sort_order="30">
+                <description>
+                    <![CDATA[<h3 style="margin: 40px 0px; text-align: center;">Settings</h3>]]></description>
+                <block class="MageOS\AdvancedWidget\Block\Adminhtml\Renderer\Title"/>
+            </parameter>
+            <parameter name="mageos_slideshow_height" sort_order="31" visible="true" xsi:type="select">
+                <label>Height</label>
+                <description>The slideshow always takes up full width, and the height will adapt automatically based on the defined ratio. Alternatively, the height can adapt to the height of the viewport.</description>
+                <options>
+                    <option name="auto" value="auto" selected="true">
+                        <label translate="true">Auto</label>
+                    </option>
+                    <option name="viewport" value="viewport">
+                        <label translate="true">Viewport</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="mageos_slideshow_ratio" sort_order="32" required="true" visible="true" xsi:type="text">
+                <label>Ratio</label>
+                <description>Set the slideshow ratio. It's recommended to use the same ratio as the image or video file. Simply use its width and height, e.g. 1600/1000 (Ignored when 'Viewport' is specified as slideshow height).</description>
+                <value>16/10</value>
+            </parameter>
+            <parameter name="mageos_slideshow_min_height" sort_order="33" visible="true" xsi:type="text" required="true">
+                <label>Min Height</label>
+                <description>Use an optional minimum height to prevent the slideshow from becoming smaller than its content on small devices (specify integer value for height in pixels).</description>
+                <value>100</value>
+            </parameter>
+            <parameter name="mageos_slideshow_max_height" sort_order="34" visible="true" xsi:type="text">
+                <label>Max Height</label>
+                <description>Set the maximum height (specify integer value for height in pixels, Ignored when 'Viewport' is specified as slideshow height).</description>
+            </parameter>
+            <parameter name="mageos_slideshow_transition" sort_order="35" visible="true" xsi:type="select">
+                <label>Transition</label>
+                <description>Select the transition between two slides.</description>
+                <options>
+                    <option name="slide" value="slide" selected="true">
+                        <label translate="true">Slide</label>
+                    </option>
+                    <option name="fade" value="fade">
+                        <label translate="true">Fade</label>
+                    </option>
+                    <option name="none" value="none">
+                        <label translate="true">None</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="mageos_slideshow_autoplay" sort_order="36" visible="true" xsi:type="select">
+                <label>Autoplay</label>
+                <options>
+                    <option name="0" value="0" selected="true">
+                        <label translate="true">No</label>
+                    </option>
+                    <option name="1" value="1">
+                        <label translate="true">Yes</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="mageos_slideshow_speed" sort_order="37" visible="true" xsi:type="text">
+                <label>Autoplay speed</label>
+                <description>Select the velocity seconds for autoplay interval.</description>
+                <value>1.5</value>
+            </parameter>
+            <parameter name="mageos_slideshow_loop" sort_order="38" visible="true" xsi:type="select">
+                <label>Loop</label>
+                <options>
+                    <option name="0" value="0" selected="true">
+                        <label translate="true">No</label>
+                    </option>
+                    <option name="1" value="1">
+                        <label translate="true">Yes</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="mageos_slideshow_navigation_section_title" xsi:type="block" required="false" visible="true" sort_order="50">
+                <description>
+                    <![CDATA[<h3 style="margin: 40px 0px; text-align: center;">Navigation</h3>]]></description>
+                <block class="MageOS\AdvancedWidget\Block\Adminhtml\Renderer\Title"/>
+            </parameter>
+            <parameter name="mageos_slideshow_navigation" sort_order="51" visible="true" xsi:type="select">
+                <label>Navigation</label>
+                <description>Select the navigation type.</description>
+                <options>
+                    <option name="dotnav" value="dotnav" selected="true">
+                        <label translate="true">Dotnav</label>
+                    </option>
+                    <option name="thumbnav" value="thumbnav">
+                        <label translate="true">Thumbnav</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="mageos_slideshow_navigation_thumbnav_width" sort_order="52" visible="true" xsi:type="text">
+                <label>Thumbnav images width</label>
+                <description>Specify Thumbnav images width in pixels.</description>
+                <value>100</value>
+            </parameter>
+            <parameter name="mageos_slideshow_navigation_thumbnav_height" sort_order="53" visible="true" xsi:type="text">
+                <label>Thumbnav images height</label>
+                <description>Specify Thumbnav images height in pixels.</description>
+                <value>67</value>
+            </parameter>
+            <parameter name="mageos_slideshow_navigation_position" sort_order="54" visible="true" xsi:type="select">
+                <label>Position</label>
+                <description>Set the position of the navigation.</description>
+                <options>
+                    <option name="top-left" value="top-left" selected="true">
+                        <label translate="true">Top left</label>
+                    </option>
+                    <option name="top-right" value="top-right">
+                        <label translate="true">Top right</label>
+                    </option>
+                    <option name="top-center" value="top-center">
+                        <label translate="true">Top center</label>
+                    </option>
+                    <option name="center-left" value="center-left">
+                        <label translate="true">Center left</label>
+                    </option>
+                    <option name="center-right" value="center-right">
+                        <label translate="true">Center right</label>
+                    </option>
+                    <option name="bottom-left" value="bottom-left">
+                        <label translate="true">Bottom left</label>
+                    </option>
+                    <option name="bottom-center" value="bottom-center">
+                        <label translate="true">Bottom center</label>
+                    </option>
+                    <option name="bottom-right" value="bottom-right">
+                        <label translate="true">Bottom right</label>
+                    </option>
+                    <option name="below-left" value="below-left">
+                        <label translate="true">Below left</label>
+                    </option>
+                    <option name="below-center" value="below-center">
+                        <label translate="true">Below center</label>
+                    </option>
+                    <option name="below-right" value="below-right">
+                        <label translate="true">Below right</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="mageos_slideshow_navigation_direction" sort_order="55" visible="true" xsi:type="select">
+                <label>Direction</label>
+                <description>Set the direction of the navigation.</description>
+                <options>
+                    <option name="horizontal" value="horizontal" selected="true">
+                        <label translate="true">Horizontal</label>
+                    </option>
+                    <option name="vertical" value="vertical">
+                        <label translate="true">Vertical</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="mageos_slideshow_navigation_display" sort_order="56" visible="true" xsi:type="select">
+                <label>Breaking point</label>
+                <description>Display the navigation only on this device width and larger.</description>
+                <options>
+                    <option name="always" value="never">
+                        <label translate="true">Never</label>
+                    </option>
+                    <option name="always" value="always" selected="true">
+                        <label translate="true">Always</label>
+                    </option>
+                    <option name="small" value="s">
+                        <label translate="true">Small (Phone in Landscape)</label>
+                    </option>
+                    <option name="medium" value="m">
+                        <label translate="true">Medium (Tablet in Landscape)</label>
+                    </option>
+                    <option name="large" value="l">
+                        <label translate="true">Large (Desktop)</label>
+                    </option>
+                    <option name="x-large" value="xl">
+                        <label translate="true">X-Large (Big screens)</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="mageos_slideshow_overlay_section_title" xsi:type="block" required="false" visible="true" sort_order="70">
+                <description>
+                    <![CDATA[<h3 style="margin: 40px 0px; text-align: center;">Overlay</h3>]]></description>
+                <block class="MageOS\AdvancedWidget\Block\Adminhtml\Renderer\Title"/>
+            </parameter>
+            <parameter name="mageos_slideshow_overlay_width" sort_order="71" visible="true" xsi:type="select">
+                <label>Container Width</label>
+                <description>Set the maximum content width. Note: The section may already have a maximum width, which you cannot exceed.</description>
+                <options>
+                    <option name="small" value="small">
+                        <label translate="true">Small</label>
+                    </option>
+                    <option name="medium" value="medium">
+                        <label translate="true">Medium</label>
+                    </option>
+                    <option name="large" value="large">
+                        <label translate="true">Large</label>
+                    </option>
+                    <option name="expand" value="expand" selected="true">
+                        <label translate="true">Expand</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="mageos_slideshow_overlay_position" sort_order="72" visible="true" xsi:type="select">
+                <label>Position</label>
+                <description>Select the content position.</description>
+                <options>
+                    <option name="top-left" value="top-left">
+                        <label translate="true">Top left</label>
+                    </option>
+                    <option name="top-right" value="top-right">
+                        <label translate="true">Top right</label>
+                    </option>
+                    <option name="bottom-left" value="bottom-left">
+                        <label translate="true">Bottom left</label>
+                    </option>
+                    <option name="bottom-right" value="bottom-right">
+                        <label translate="true">Bottom right</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="mageos_slideshow_overlay_text_alignment" sort_order="73" visible="true" xsi:type="select">
+                <label>Text alignment</label>
+                <description>Select text alignment for the overlay content.</description>
+                <options>
+                    <option name="left" value="left" selected="true">
+                        <label translate="true">Left</label>
+                    </option>
+                    <option name="center" value="center">
+                        <label translate="true">Center</label>
+                    </option>
+                    <option name="right" value="right">
+                        <label translate="true">Right</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="mageos_slideshow_overlay_link_type" sort_order="74" visible="true" xsi:type="select">
+                <label>Link Type</label>
+                <description>Select link type for overlay button.</description>
+                <options>
+                    <option name="button-primary" value="button-primary" selected="true">
+                        <label translate="true">Button primary</label>
+                    </option>
+                    <option name="button-secondary" value="button-secondary">
+                        <label translate="true">Button secondary</label>
+                    </option>
+                    <option name="link" value="link">
+                        <label translate="true">Link</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="mageos_slideshow_slidenav_section_title" xsi:type="block" required="false" visible="true" sort_order="90">
+                <description>
+                    <![CDATA[<h3 style="margin: 40px 0px; text-align: center;">Slidenav</h3>]]></description>
+                <block class="MageOS\AdvancedWidget\Block\Adminhtml\Renderer\Title"/>
+            </parameter>
+            <parameter name="mageos_slideshow_slidenav_visibility" sort_order="91" visible="true" xsi:type="select">
+                <label>Visibility</label>
+                <description>By default slidenav is visible.</description>
+                <options>
+                    <option name="show" value="show" selected="true">
+                        <label translate="true">Show</label>
+                    </option>
+                    <option name="hide" value="hide">
+                        <label translate="true">Hide</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="mageos_slideshow_slidenav_position" sort_order="92" visible="true" xsi:type="select">
+                <label>Position</label>
+                <description>Set slidenav position (used if slidenav is visible only).</description>
+                <options>
+                    <option name="default" value="default" selected="true">
+                        <label translate="true">Default</label>
+                    </option>
+                    <option name="bottom-left" value="bottom-left">
+                        <label translate="true">Bottom Left</label>
+                    </option>
+                    <option name="bottom-right" value="bottom-right">
+                        <label translate="true">Bottom Right</label>
+                    </option>
+                    <option name="top-left" value="top-left">
+                        <label translate="true">Top Left</label>
+                    </option>
+                    <option name="top-right" value="top-right">
+                        <label translate="true">Top Right</label>
+                    </option>
+                    <option name="above-left" value="above-left">
+                        <label translate="true">Above Left</label>
+                    </option>
+                    <option name="above-right" value="above-right">
+                        <label translate="true">Above Right</label>
+                    </option>
+                    <option name="below-left" value="below-left">
+                        <label translate="true">Below Left</label>
+                    </option>
+                    <option name="below-right" value="below-right">
+                        <label translate="true">Below Right</label>
+                    </option>
+                </options>
+            </parameter>
+
+            <parameter name="mageos_slideshow_image_section_title" xsi:type="block" required="false" visible="true" sort_order="110">
+                <description>
+                    <![CDATA[<h3 style="margin: 40px 0px; text-align: center;">Image</h3>]]></description>
+                <block class="MageOS\AdvancedWidget\Block\Adminhtml\Renderer\Title"/>
+            </parameter>
+            <parameter name="mageos_slideshow_image_loading" sort_order="111" visible="true" xsi:type="select">
+                <label>Loading</label>
+                <description>By default, images are loaded lazy. Enable eager loading for images in the initial viewport.</description>
+                <options>
+                    <option name="lazy" value="lazy" selected="true">
+                        <label translate="true">Lazy</label>
+                    </option>
+                    <option name="eager" value="eager">
+                        <label translate="true">Eager</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+        <previewTemplates>
+            <previewTemplate name="widget/hyva/slideshow.phtml" xsi:type="string">MageOS_Widgetkit::slideshow.phtml</previewTemplate>
+        </previewTemplates>
+        <previewBlock>MageOS\Widgetkit\Block\Adminhtml\Slideshow\Preview</previewBlock>
+        <previewCss>MageOS_Widgetkit::css/widget/preview/slideshow.css</previewCss>
+    </widget>
+
+</widgets>

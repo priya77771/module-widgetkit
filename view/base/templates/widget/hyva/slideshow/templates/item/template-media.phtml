@@ -1,0 +1,46 @@
+<?php
+
+use MageOS\Widgetkit\Block\Widgets\Slideshow;
+
+/**
+ * @var Slideshow $this
+ */
+
+$params = $this->getData('params');
+$item = $this->getData('item');
+
+if ($item['image']) {
+    $src = $item['image'];
+    $image = [
+        'src' => $src,
+        'alt' => $item['image_alt'],
+        'loading' => $item['count'] === 0 ? 'eager' : $params['mageos_slideshow_image_loading'],
+        'width' => isset($params['image_width']) ?? false,
+        'height' => isset($params['image_height']) ?? false
+    ];
+} else {
+    return;
+}
+
+$duration = 'duration-' . (int) $params['mageos_slideshow_speed'] ?? 300;
+$srcset = !empty($item['mobile_image']) ? $item['mobile_image'] . ' 768w, ' . $image['src'] . ' 2000w': false;
+?>
+<picture
+    x-data="{ index: <?= (int)$item['count'] ?> }"
+    class="absolute start-0 top-0 h-full w-full object-cover">
+    <source class="w-full" type="image/jpeg" srcset="<?= $srcset; ?>" />
+    <img
+        src="<?= $image['src']; ?>"
+        class="absolute left-1/2 top-0 -translate-x-1/2 top-0 h-full w-full object-cover"
+        <?php if ($image['loading'] === 'eager'): ?>
+            fetchpriority="high"
+            loading="eager"
+        <?php else: ?>
+            loading="lazy"
+        <?php endif; ?>
+        role="group"
+        aria-roledescription="slide"
+        x-bind:aria-label="`Image slide ${index + 1} of ${images.length}`"
+        x-bind:aria-hidden="currentIndex !== index"
+    />
+</picture>
